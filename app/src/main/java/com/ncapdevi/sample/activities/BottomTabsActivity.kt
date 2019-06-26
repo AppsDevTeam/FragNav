@@ -9,6 +9,7 @@ import com.ncapdevi.fragnav.FragNavController
 import com.ncapdevi.fragnav.FragNavLogger
 import com.ncapdevi.fragnav.FragNavSwitchController
 import com.ncapdevi.fragnav.FragNavTransactionOptions
+import com.ncapdevi.fragnav.tabhistory.UniqueBackToFirstTabHistoryStrategy
 import com.ncapdevi.fragnav.tabhistory.UniqueTabHistoryStrategy
 import com.ncapdevi.sample.R
 import com.ncapdevi.sample.fragments.*
@@ -40,7 +41,7 @@ class BottomTabsActivity : AppCompatActivity(), BaseFragment.FragmentNavigation,
             defaultTransactionOptions = FragNavTransactionOptions.newBuilder().customAnimations(R.anim.slide_in_from_right, R.anim.slide_out_to_left, R.anim.slide_in_from_left, R.anim.slide_out_to_right).build()
             fragmentHideStrategy = FragNavController.DETACH_ON_NAVIGATE_HIDE_ON_SWITCH
 
-            navigationStrategy = UniqueTabHistoryStrategy(object : FragNavSwitchController {
+            navigationStrategy = UniqueBackToFirstTabHistoryStrategy(object : FragNavSwitchController {
                 override fun switchTab(index: Int, transactionOptions: FragNavTransactionOptions?) {
                     bottomBar.selectTabAtPosition(index)
                 }
